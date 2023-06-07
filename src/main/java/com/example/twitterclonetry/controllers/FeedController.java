@@ -1,6 +1,7 @@
 package com.example.twitterclonetry.controllers;
 
 import com.example.twitterclonetry.model.Tweet;
+import com.example.twitterclonetry.services.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
