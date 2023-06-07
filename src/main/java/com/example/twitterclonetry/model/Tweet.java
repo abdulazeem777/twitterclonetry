@@ -1,5 +1,6 @@
 package com.example.twitterclonetry.model;
 
+import com.example.twitterclonetry.enums.TweetType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,7 +14,9 @@ public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String type;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TweetType type;
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
