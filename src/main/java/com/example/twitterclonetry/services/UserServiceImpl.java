@@ -55,4 +55,23 @@ public class UserServiceImpl implements UserService{
         log.info("User {} unfollowed user {}", follower.getName(), followee.getName());
         return true;
     }
+
+    @Override
+    public User addUser(User user) {
+        log.info("validate input parameters for : {}", Thread.currentThread().getStackTrace()[1].getMethodName());
+        if (user == null) {
+            log.error("Invalid input parameter for addUser method");
+            return null;
+        }
+        log.info("check if user already exists by email");
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser != null) {
+            log.error("User already exists with email: {}", user.getEmail());
+            return null;
+        }
+        log.info("save user and return it");
+        userRepository.save(user);
+        log.info("User added successfully with id: {}", user.getId());
+        return user;
+    }
 }

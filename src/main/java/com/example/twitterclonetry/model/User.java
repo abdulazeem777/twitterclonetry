@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -32,7 +33,10 @@ public class User {
     @JoinTable(name = "followers",
             joinColumns = @JoinColumn(name = "follower_id"),
             inverseJoinColumns = @JoinColumn(name = "followee_id"))
-    private List<User> following;
+    private List<User> followers;
+
+    @ManyToMany(mappedBy = "followers")
+    private Set<User> followees;
 
     @OneToMany(mappedBy = "user")
     private List<Feed> feeds;
