@@ -22,6 +22,7 @@ public class Tweet {
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
     private User user;
 
     @ManyToMany(mappedBy = "favoriteTweets")

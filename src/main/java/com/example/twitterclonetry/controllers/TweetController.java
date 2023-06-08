@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/tweets")
@@ -17,7 +17,7 @@ public class TweetController {
     private TweetService tweetService;
 
     @PostMapping
-    public ResponseEntity<Boolean> postTweet(@RequestParam UUID userId,@RequestParam String content,
+    public ResponseEntity<Boolean> postTweet(@RequestParam long userId,@RequestParam String content,
                                              @RequestParam(required = false) String mediaURL){
         boolean result = tweetService.postTweet(userId, content, mediaURL);
         return ResponseEntity.ok(result);

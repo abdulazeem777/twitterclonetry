@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/users")
@@ -15,13 +15,13 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/follow")
-    public ResponseEntity<Boolean> follow(@RequestParam UUID followerID, @RequestParam UUID followeeID) {
+    public ResponseEntity<Boolean> follow(@RequestParam long followerID, @RequestParam long followeeID) {
         boolean result = userService.follow(followerID, followeeID);
         return ResponseEntity.ok(result);
     }
 
     @PostMapping("/unfollow")
-    public ResponseEntity<Boolean> unfollow(@RequestParam UUID followerID, @RequestParam UUID followeeID) {
+    public ResponseEntity<Boolean> unfollow(@RequestParam long followerID, @RequestParam long followeeID) {
         boolean result = userService.unfollow(followerID, followeeID);
         return ResponseEntity.ok(result);
     }

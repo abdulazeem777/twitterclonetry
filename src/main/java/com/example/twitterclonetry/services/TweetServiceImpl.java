@@ -10,7 +10,7 @@ import org.slf4j.ILoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+
 
 @Service
 @Slf4j
@@ -22,10 +22,10 @@ public class TweetServiceImpl implements TweetService{
     private UserRepository userRepository;
 
     @Override
-    public boolean postTweet(UUID userID, String content, String mediaURL) {
+    public boolean postTweet(long userID, String content, String mediaURL) {
         log.debug("Posting Tweet for user: {}", userID);
         log.info("Validating input parameters");
-        if (userID == null || content == null || content.isEmpty()) {
+        if (content == null || content.isEmpty()) {
             log.error("Empty Tweet or Null user sent from frontend :(");
             return false;
         }
