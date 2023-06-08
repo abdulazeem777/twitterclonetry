@@ -2,8 +2,10 @@ package com.example.twitterclonetry.model;
 
 import com.example.twitterclonetry.enums.TweetType;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,4 +29,7 @@ public class Tweet {
 
     @ManyToMany(mappedBy = "tweets")
     private List<Feed> feeds;
+
+    @CreatedDate
+    private Date createdAt;
 }
