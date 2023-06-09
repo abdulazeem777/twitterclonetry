@@ -1,13 +1,16 @@
 package com.example.twitterclonetry.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
 public class Feed {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     @Column(nullable = false)
     private String name;
 
