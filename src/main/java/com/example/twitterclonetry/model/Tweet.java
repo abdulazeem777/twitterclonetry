@@ -15,13 +15,14 @@ public class Tweet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TweetType type;
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
     private User user;
 
     @ManyToMany(mappedBy = "favoriteTweets")

@@ -2,12 +2,12 @@ package com.example.twitterclonetry.services;
 
 import com.example.twitterclonetry.model.User;
 
-import java.util.UUID;
+
 
 public interface UserService {
-    boolean follow(UUID followerID, UUID followeeID);
+    boolean follow(long followerID, long followeeID);
 
-    boolean unfollow(UUID followerID, UUID followeeID);
+    boolean unfollow(long followerID, long followeeID);
 
     User addUser(User user);
 }

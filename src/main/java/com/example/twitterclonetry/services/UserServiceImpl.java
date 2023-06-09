@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+
 
 @Service
 @Slf4j
@@ -15,12 +15,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
     @Override
-    public boolean follow(UUID followerID, UUID followeeID) {
+    public boolean follow(long followerID, long followeeID) {
         log.info("validate input parameters for : {}", Thread.currentThread().getStackTrace()[1].getMethodName());
-        if (followerID == null || followeeID == null) {
-            log.error("Invalid input parameters for follow method"); 
-            return false;
-        }
         log.info("find users by id");
         User follower = userRepository.findById(followerID).orElse(null);
         User followee = userRepository.findById(followeeID).orElse(null);
@@ -36,12 +32,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean unfollow(UUID followerID, UUID followeeID) {
+    public boolean unfollow(long followerID, long followeeID) {
         log.info("validate input parameters for : {}", Thread.currentThread().getStackTrace()[1].getMethodName());
-        if (followerID == null || followeeID == null) {
-            log.error("Invalid input parameters for unfollow method");
-            return false;
-        }
         log.info("find users by id");
         User follower = userRepository.findById(followerID).orElse(null);
         User followee = userRepository.findById(followeeID).orElse(null);

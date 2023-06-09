@@ -21,12 +21,8 @@ public class FeedServiceImpl implements FeedService{
     TweetRepository tweetRepository;
 
     @Override
-    public List<Tweet> getNewsfeed(UUID userID) {
+    public List<Tweet> getNewsfeed(long userID) {
         log.info("validate input parameters for : {}", Thread.currentThread().getStackTrace()[1].getMethodName());
-        if (userID == null) {
-            log.error("Invalid input parameter for getNewsfeed method"); // log error message
-            return Collections.emptyList();
-        }
         log.info("find user by id : {}", userID);
         User user = userRepository.findById(userID).orElse(null);
         if (user == null) {

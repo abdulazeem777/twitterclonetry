@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/feed")
@@ -20,7 +20,7 @@ public class FeedController {
     private FeedService feedService;
 
     @GetMapping
-    public ResponseEntity<List<Tweet>> getNewsfeed(@RequestParam UUID userID) {
+    public ResponseEntity<List<Tweet>> getNewsfeed(@RequestParam long userID) {
         List<Tweet> tweets = feedService.getNewsfeed(userID);
         return ResponseEntity.ok(tweets);
     }
